@@ -8,7 +8,7 @@ import {
   TextInput,
 } from "react-native";
 
-export default function Home({ navigation }) {
+export default function SignUp({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
