@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   StyleSheet,
   TextInput,
-  Alert,
 } from "react-native";
 
 export default function SignUp({ navigation }) {
@@ -55,8 +54,8 @@ export default function SignUp({ navigation }) {
         <TextInput
           placeholder="비밀번호를 입력하세요."
           secureTextEntry={true}
-          onChangeText={setPwCheck}
-          value={pwCheck}
+          onChangeText={setPw}
+          value={pw}
           style={styles.input}
         />
       </View>
@@ -66,8 +65,8 @@ export default function SignUp({ navigation }) {
         <TextInput
           placeholder="비밀번호를 입력하세요."
           secureTextEntry={true}
-          onChangeText={setPw}
-          value={pw}
+          onChangeText={setPwCheck}
+          value={pwCheck}
           style={styles.input}
         />
       </View>
