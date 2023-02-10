@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Start from "./screens/Start";
 import SignUp from "./screens/SignUp";
 import Write from "./screens/Write";
+import Main from "./screens/Main";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -15,6 +16,7 @@ export default function App() {
         <Stack.Screen name='Start' component={Start} />
         <Stack.Screen name='SignUp' component={SignUp} />
         <Stack.Screen name='Write' component={Write} />
+        <Stack.Screen name='Main' component={Main} />
       </Stack.Navigator>
     </NavigationContainer>
   );

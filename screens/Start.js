@@ -54,7 +54,7 @@ export default function Start({ navigation }) {
 
       <View>
         <TouchableOpacity
-        onPress={() => navigation.navigate("Write")}
+        onPress={() => navigation.navigate("Main")}
         style={styles.signInBtn}>
           <Text>로그인</Text>
         </TouchableOpacity>
