@@ -14,6 +14,11 @@ export default function SignUp({ navigation }) {
   const [pwCheck, setPwCheck] = useState("");
   const [name, setName] = useState("");
 
+  const [emailMessage, setEmailMessage] = useState("");
+  const [pwMessage, setPwMessage] = useState("");
+  const [pwCheckMessage, setPwCheckMessage] = useState("");
+  const [nameMessage, setNameMessage] = useState("");
+
   const signUp = () => {
     if (pw !== pwCheck) {
       alert("비밀번호가 일치하지 않습니다.");
