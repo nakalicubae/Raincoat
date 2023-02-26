@@ -14,35 +14,60 @@ import { Feather } from "@expo/vector-icons";
 
 export default function Write({ navigation }) {
   const [writable, setWritable] = useState(true);
+  const [editMode, setEditMode] = useState("write");
+
+  const write = () => {
+    setEditMode("write");
+    setWritable(true);
+  };
+
+  const draw = () => {
+    setEditMode("draw");
+    setWritable(false);
+  };
+
+  const picture = () => {
+    setEditMode("picture");
+    setWritable(false);
+  };
+
+  const sticker = () => {
+    setEditMode("sticker");
+    setWritable(false);
+    alert(`준비 중입니다!`);
+  };
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
 
       <View style={styles.menuBar}>
-        <TouchableOpacity
-          onPress={() => setWritable(true)}
-          style={styles.menuItem}
-        >
-          <Ionicons name="text" size={30} color="black" />
+        <TouchableOpacity onPress={write} style={styles.menuItem}>
+          <Ionicons
+            name="text"
+            size={30}
+            color={editMode == "write" ? "gold" : "black"}
+          />
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => setWritable(false)}
-          style={styles.menuItem}
-        >
-          <MaterialCommunityIcons name="draw" size={30} color="black" />
+        <TouchableOpacity onPress={draw} style={styles.menuItem}>
+          <MaterialCommunityIcons
+            name="draw"
+            size={30}
+            color={editMode == "draw" ? "gold" : "black"}
+          />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem}>
-          <Feather name="image" size={30} color="black" />
+        <TouchableOpacity onPress={picture} style={styles.menuItem}>
+          <Feather
+            name="image"
+            size={30}
+            color={editMode == "picture" ? "gold" : "black"}
+          />
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => alert(`준비 중입니다!`)}
-          style={styles.menuItem}
-        >
+        <TouchableOpacity onPress={sticker} style={styles.menuItem}>
           <MaterialCommunityIcons
             name="sticker-outline"
             size={30}
-            color="black"
+            color={editMode == "sticker" ? "gold" : "black"}
           />
         </TouchableOpacity>
       </View>
@@ -50,6 +75,7 @@ export default function Write({ navigation }) {
       <View style={styles.body}>
         <TextInput
           style={styles.diary}
+          borderColor={editMode == "write" ? "gold" : "black"}
           multiline={true}
           placeholder="오늘의 우비를 쓰세요 :D"
           editable={writable}
@@ -58,7 +84,10 @@ export default function Write({ navigation }) {
         />
       </View>
 
-      <TouchableOpacity style={styles.completeBtn}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Main")}
+        style={styles.completeBtn}
+      >
         <Text style={styles.completeText}>완료</Text>
       </TouchableOpacity>
     </View>
@@ -91,7 +120,7 @@ const styles = StyleSheet.create({
 
   diary: {
     flex: 1,
-    borderColor: "black",
+    //borderColor: "gold",
     borderWidth: 2,
     padding: 5,
   },
