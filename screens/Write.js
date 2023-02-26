@@ -6,7 +6,9 @@ import {
   TouchableOpacity,
   StyleSheet,
   TextInput,
+  Image
 } from "react-native";
+import * as ImagePicker from "expo-image-picker";
 import { Canvas, CanvasRef } from "@benjeau/react-native-draw";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -15,6 +17,7 @@ import { Feather } from "@expo/vector-icons";
 export default function Write({ navigation }) {
   const [writable, setWritable] = useState(true);
   const [editMode, setEditMode] = useState("write");
+  const [image, setImage] = useState(null);
 
   const write = () => {
     setEditMode("write");
@@ -26,15 +29,29 @@ export default function Write({ navigation }) {
     setWritable(false);
   };
 
-  const picture = () => {
+  const picture = async () => {
     setEditMode("picture");
     setWritable(false);
+    await pickImage();
   };
 
   const sticker = () => {
     setEditMode("sticker");
     setWritable(false);
     alert(`준비 중입니다!`);
+  };
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
   };
 
   return (
@@ -82,6 +99,7 @@ export default function Write({ navigation }) {
           returnKeyType="done"
           blurOnSubmit={true}
         />
+        {image && <Image source={{ uri: image }} style={styles.image} />}
       </View>
 
       <TouchableOpacity
@@ -139,4 +157,10 @@ const styles = StyleSheet.create({
   completeText: {
     //fontSize: 16,
   },
+
+  image: {
+    width: 200,
+    height: 200,
+    position: "absolute",
+  }
 });
