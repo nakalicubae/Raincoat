@@ -46,8 +46,12 @@ export default function MyPage({ navigation }) {
       </View>
 
       <View style={styles.footer}>
-        <Text style={styles.footerText}>로그아웃</Text>
-        <Text style={styles.footerText}>회원탈퇴</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Start")}>
+          <Text style={styles.footerText}>로그아웃</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Start")}>
+          <Text style={styles.footerText}>회원탈퇴</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
