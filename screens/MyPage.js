@@ -5,12 +5,28 @@ import {
   Text,
   TextInput,
   View,
-  ScrollView,
+  Image,
   TouchableOpacity,
 } from "react-native";
+import * as ImagePicker from "expo-image-picker";
 import { AntDesign } from "@expo/vector-icons";
 
 export default function MyPage({ navigation }) {
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -24,11 +40,15 @@ export default function MyPage({ navigation }) {
         </TouchableOpacity>
       </View>
       <View style={styles.body}>
-        <View style={styles.image}>
-          <TouchableOpacity>
-            <AntDesign name="picture" size={30} color="black" />
-          </TouchableOpacity>
-        </View>
+        {image == null ? (
+          <View style={styles.image}>
+            <TouchableOpacity onPress={pickImage}>
+              <AntDesign name="picture" size={30} color="gray" />
+            </TouchableOpacity>
+          </View>
+        ) : (
+          image && <Image source={{ uri: image }} style={styles.image} />
+        )}
 
         <View style={styles.infoContainer}>
           <View style={styles.info}>
@@ -92,8 +112,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    borderColor: "black",
-    borderWidth: 2,
+    backgroundColor: "#dcdcdc",
     borderRadius: 100,
     height: 160,
     width: 160,
