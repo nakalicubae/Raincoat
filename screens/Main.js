@@ -126,8 +126,9 @@ export default function Main({ navigation }) {
   
       <View>
         <TouchableOpacity
-        onPress={() => navigation.navigate("Write")}
-        style={styles.write}>
+          onPress={() => navigation.navigate("Write")}
+          style={styles.write}
+        >
           <Text>우비쓰기</Text>
         </TouchableOpacity>
       </View>
@@ -138,9 +139,9 @@ export default function Main({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white'
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
   },
 
   header: {
@@ -165,13 +166,12 @@ const styles = StyleSheet.create({
     marginRight: 60
   },
 
-
   today: {
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     marginHorizontal: 30,
     marginTop: 30,
     fontSize: 20,
-    letterSpacing: 3
+    letterSpacing: 3,
   },
 
   current: {
@@ -202,12 +202,12 @@ const styles = StyleSheet.create({
   },
 
   person: {
-    padding: 10
+    padding: 10,
   },
 
   write: {
-    backgroundColor: 'gold',
-    borderColor: 'gold',
+    backgroundColor: "gold",
+    borderColor: "gold",
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,

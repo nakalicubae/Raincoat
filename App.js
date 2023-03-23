@@ -6,6 +6,7 @@ import Start from "./screens/Start";
 import SignUp from "./screens/SignUp";
 import Write from "./screens/Write";
 import Main from "./screens/Main";
+import MyPage from "./screens/MyPage";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -17,6 +18,7 @@ export default function App() {
         <Stack.Screen name='SignUp' component={SignUp} />
         <Stack.Screen name='Write' component={Write} />
         <Stack.Screen name='Main' component={Main} />
+        <Stack.Screen name='MyPage' component={MyPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
