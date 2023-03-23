@@ -61,8 +61,11 @@ export default function Main({ navigation }) {
         </View>
 
         <View style={styles.menuBar}>
-          <Ionicons name="person-circle" size={40} color="black" />
-          {/* <MaterialCommunityIcons name="microsoft-xbox-controller-menu" size={40} color="black" /> */}
+          <TouchableOpacity
+            onPress={() => navigation.navigate("MyPage")}
+            style={styles.findBtn}>
+            <Ionicons name="person-circle" size={40} color="black" />
+          </TouchableOpacity>
           <Pressable
             onPress={() => setModalVisible(true)}>
             {/* <Text style={styles.textStyle}>Show Modal</Text> */}
